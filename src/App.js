@@ -8,6 +8,14 @@ import Hardware from './components/Hardware';
 
 class App extends Component {
 
+	// State
+	constructor(){
+		super();
+		this.state = {
+			number: 1
+		}
+	}
+
 	// Component LifeCycle 
 	componentDidMount(){
 		console.log('componentDidMount');
@@ -26,6 +34,16 @@ class App extends Component {
 	}
 	// end Component LifeCycle 
 
+	// Event 
+	alertClick(){
+		// Membuat number dalam state menjadi dinamis, setiap klik angka bertambah
+		const number = this.state.number + 1;
+		this.setState({
+			number:number
+		});
+	}
+	// End event
+
 	render() {
 		console.log('tes');
 		return (
@@ -41,6 +59,9 @@ class App extends Component {
 					color="red"
 				></Car>
 				<Hardware motherboard="intel"></Hardware>
+
+				<p>{this.state.number}</p>
+				<button onClick={() => {this.alertClick();}}>Increase Number</button>
 			</div>
 		);
 	}
